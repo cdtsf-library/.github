@@ -1,0 +1,23 @@
+independence:
+  - name: 成人性转小说档案馆
+    path: https://snovel.cdtsf.com
+    url: https://snovel.cdtsf.com
+  - name: TSF 变身文学档案馆（短篇）
+    path: https://archive.cdtsf.com
+    url: https://archive.cdtsf.com
+  - name: 阉割与人体改造中文档案馆
+    path: https://enovel.cdtsf.com
+    url: https://enovel.cdtsf.com
+  - name: 扶他与双性中文档案馆
+    path: https://fnovel.cdtsf.com
+    url: https://fnovel.cdtsf.com
+ignore:
+  - '.*\.github.*'
+  - '.*\.git.*'
+  - '.*CODE_OF_CONDUCT\.md.*'
+  - '.*LICENSE.*'
+  - 'digital\.yml'
+  - 'page\.yml'
+  - 'search_index\.yml'
+  - '.*profile.*'
+  - '.*independence_repo.*'
