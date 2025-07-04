@@ -17,7 +17,7 @@ hide:
 根目录，按照内容与来源分类
 
 
-总计 17754 篇内容
+总计 23754 篇内容
 
 
 ### 📚 独立档案库与网站
@@ -26,6 +26,7 @@ hide:
 - [TSF 变身文学档案馆（短篇）: https://archive.cdtsf.com](https://archive.cdtsf.com) (10523 篇内容)
 - [阉割与人体改造中文档案馆: https://enovel.cdtsf.com](https://enovel.cdtsf.com) (2075 篇内容)
 - [扶他与双性中文档案馆: https://fnovel.cdtsf.com](https://fnovel.cdtsf.com) (402 篇内容)
+- [催眠与心控中文档案馆: https://mc.cdtsf.com](https://mc.cdtsf.com) (6052 篇内容)
 
 
 > 本内容为自动生成，请修改 .github/ 目录下的对应脚本或者模板
