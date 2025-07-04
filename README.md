@@ -6,7 +6,7 @@ hide:
 
 # 多元性别成人图书馆（Gender Diversity Adult Library）简介
 
-欢迎来到「多元性别成人图书馆」。在阅读与浏览前，请务必确认您已年满 **18 周岁**，并理解本馆可能包含成人、暴力或血腥等敏感内容，可能引起不适。若您继续访问，即表示您已充分理解并愿意自行承担风险。本馆**坚决杜绝**任何儿童色情、恐怖主义及相关非法内容，仅作非盈利存档使用，不对中国大陆地区提供服务。
+欢迎来到「多元性别成人图书馆」。在阅读与浏览前，请务必确认您已年满 **18 周岁**，并理解本馆可能包含成人、暴力或血腥等敏感内容，可能引起不适。若您继续访问，即表示您已充分理解并愿意自行承担风险。本馆**坚决杜绝**任何儿童色情、恐怖主义及相关非法内容，一经发现会立即删除并封禁。
 
 本档案馆收录的内容主要为 **AI 时代前的人类创作遗产**，希望借此保存性别文化探索历程中真实的人类经验与创作智慧，守护数字洪流中正在消逝的「肉身书写」记忆。
 
@@ -14,21 +14,81 @@ hide:
 
 ## 目录与导航
 
-根目录，按照内容与来源分类
 
+<script>
+const sortFunctions = {
+    year: (a, b, direction) => {
+        a = a === '未知' ? '0000' : a;
+        b = b === '未知' ? '0000' : b;
+        return direction === 'desc' ? b.localeCompare(a) : a.localeCompare(b);
+    },
+    count: (a, b, direction) => {
+        const aNum = parseInt(a.match(/\d+/)?.[0] || '0');
+        const bNum = parseInt(b.match(/\d+/)?.[0] || '0');
+        return direction === 'desc' ? bNum - aNum : aNum - bNum;
+    },
+    text: (a, b, direction) => {
+        return direction === 'desc' 
+            ? b.localeCompare(a, 'zh-CN') 
+            : a.localeCompare(b, 'zh-CN');
+    }
+};
 
-总计 17754 篇内容
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('th[data-sortable="true"]').forEach(th => {
+        th.style.cursor = 'pointer';
+        th.addEventListener('click', () => sortTable(th));
+        
+        if (th.getAttribute('data-sort-direction')) {
+            sortTable(th, true);
+        }
+    });
+});
 
+function sortTable(th, isInitial = false) {
+    const table = th.closest('table');
+    const tbody = table.querySelector('tbody');
+    const colIndex = Array.from(th.parentNode.children).indexOf(th);
+    
+    // Store original rows with their sort values
+    const rowsWithValues = Array.from(tbody.querySelectorAll('tr')).map(row => ({
+        element: row,
+        value: row.children[colIndex].textContent.trim(),
+        html: row.innerHTML
+    }));
+    
+    // Toggle or set initial sort direction
+    const currentDirection = th.getAttribute('data-sort-direction');
+    const direction = isInitial ? currentDirection : (currentDirection === 'desc' ? 'asc' : 'desc');
+    
+    // Update sort indicators
+    th.closest('tr').querySelectorAll('th').forEach(header => {
+        if (header !== th) {
+            header.textContent = header.textContent.replace(/ [▼▲]$/, '');
+            header.removeAttribute('data-sort-direction');
+        }
+    });
+    
+    th.textContent = th.textContent.replace(/ [▼▲]$/, '') + (direction === 'desc' ? ' ▼' : ' ▲');
+    th.setAttribute('data-sort-direction', direction);
+    
+    // Get sort function based on column type
+    const sortType = th.getAttribute('data-sort-type') || 'text';
+    const sortFn = sortFunctions[sortType] || sortFunctions.text;
+    
+    // Sort rows
+    rowsWithValues.sort((a, b) => sortFn(a.value, b.value, direction));
+    
+    // Clear and rebuild tbody
+    tbody.innerHTML = '';
+    rowsWithValues.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = row.html;
+        tbody.appendChild(tr);
+    });
+}
 
-### 📚 独立档案库与网站
-
-- [成人性转小说档案馆: https://snovel.cdtsf.com](https://snovel.cdtsf.com) (4560 篇内容)
-- [TSF 变身文学档案馆（短篇）: https://archive.cdtsf.com](https://archive.cdtsf.com) (10523 篇内容)
-- [阉割与人体改造中文档案馆: https://enovel.cdtsf.com](https://enovel.cdtsf.com) (2075 篇内容)
-- [扶他与双性中文档案馆: https://fnovel.cdtsf.com](https://fnovel.cdtsf.com) (402 篇内容)
-
-
-> 本内容为自动生成，请修改 .github/ 目录下的对应脚本或者模板
+</script>
 
 
 ---
@@ -42,16 +102,6 @@ hide:
 
 - **Github 主页**: [https://github.com/cdtsf-library](https://github.com/cdtsf-library)  
 - **网站地址**: [https://cdtsf.com](https://cdtsf.com)
-
-### Telegram channel 多元性别成人阅览室
-
-雌堕/伪娘/男娘/性转/扶她内容与资源分享 #NSFW #R-18 (阅览室里面放什么都可以呢）
-
-包含图片/视频/小说/轮盘游戏/教程/催眠音声等
-
-<https://t.me/cdtsforg>
-
----
 
 ## 其他相关非成人内容（来自多元性别中文数字图书馆）
 
