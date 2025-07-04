@@ -11,6 +11,9 @@ independence:
   - name: 扶他与双性中文档案馆
     path: https://fnovel.cdtsf.com
     url: https://fnovel.cdtsf.com
+  - name: 催眠心控中文档案馆
+    path: https://mc.cdtsf.com
+    url: https://mc.cdtsf.com
 ignore:
   - '.*\.github.*'
   - '.*\.git.*'
